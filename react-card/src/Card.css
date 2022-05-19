@@ -1,0 +1,11 @@
+/*정적인 css이므로 (바인딩 변수 등이 없으므로 그냥 css 파일로 분리)*/
+/* 리액트 js 내부 코드의 css 형태랑 달라서.. dinamyc한 css를 쓰는 게 아니라면 이렇게 일반 css로 분리하는 것이 좋음.*/
+
+.cardStyle {
+    height: 200px;
+    width: 150px;
+    padding: 0px;
+    background-color: #FFF;
+    -webkit-filter: drop-shadow(0px 0px 5px #666);
+    filter: drop-shadow(0px 0px 5px #666)
+};
