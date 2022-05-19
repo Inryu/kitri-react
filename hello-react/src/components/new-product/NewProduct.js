@@ -21,16 +21,20 @@ const NewProduct = (props) => {
     }
 
     return (
-        <form onSubmit={submitButtonHandler}>
-            <input type="submit" value="상품 추가"></input><br/><br/>
-            <label>상품명 : </label>
-            <input 
-                type="text" 
-                ref={productButton} 
-                value={typedProduct} 
-                onChange={inputChangeHandler}>
-            </input>
-        </form>
+        <>
+            <form onSubmit={submitButtonHandler}>
+                <input type="submit" value="상품 추가"></input><br/><br/>
+                <label>상품명 : </label>
+                <input 
+                    type="text" 
+                    ref={productButton} 
+                    value={typedProduct} 
+                    onChange={inputChangeHandler}>
+                </input>
+            </form>
+            {/* 컴포지션 */}
+            <div>{props.children}</div> 
+        </>
     )
 }
 export default NewProduct;

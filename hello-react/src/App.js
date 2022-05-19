@@ -37,7 +37,9 @@ const App = () => {
   }
   return (
     <>
-      <NewProduct onProductAdd = {addProductFromNewProduct} />
+      <NewProduct onProductAdd = {addProductFromNewProduct}>
+        <h1>hello</h1>
+      </NewProduct>
       <ShopHeader {...greet}/> 
       <ShopContent products={products}/>
       <ShopFooter whoMade={whoMade}/>
