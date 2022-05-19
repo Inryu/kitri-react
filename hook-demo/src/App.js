@@ -1,8 +1,28 @@
 import { useState, useEffect } from 'react';
-import './App.css'
+import axios from 'axios';
+import List from './components/List';
 
 function App() {
+  const [todos,setTodos] = useState([{}]);
+  const fetchTodosFromFakeServer = () => {
+    axios.get('https://jsonplaceholder.typicode.com/todos')
+        .then((res)=>{
+          //console.log(res.data);
+          setTodos(res.data);
+        })
+        .catch((error)=>{
+          console.log(error);
+        });
+  };
+  useEffect(() => {
+    fetchTodosFromFakeServer();
+  },[]); //최초 로딩될 때 한 번만 가져오기.
 
+  const onRefreshButtonClickHandler = () => {
+    fetchTodosFromFakeServer();
+  }
+
+  /*
   const [number, setNumber] = useState(0);
 
   useEffect(() => {
@@ -18,22 +38,16 @@ function App() {
 
   const reRenderButtonClickHandler = () => {
     //setNumber(Math.floor(Math.random() * 100));
-    const increasedNumber = number +1;
-    setNumber(increasedNumber);
+    //const increasedNumber = number +1;
+    setNumber(prev => prev +1 ); //setter의 파라미터를 함수로 받을 때 인자는 기존의 값.
   }
+  */
   return (
-    <div className='main-content'>
-      <h1>📓 Todo List</h1>
-      <button className='w-btn w-btn-green'
-              onClick={reRenderButtonClickHandler}>화면 리렌더링
-      </button>
-      <ul>
-        <li>집 청소</li>
-        <li>마블 영화 정주행</li>
-        <li>헬스</li>
-      </ul>
-      <h3>{number}</h3>
-    </div>
+    <>
+      <h1>Todo List 📓</h1>
+      <button onClick={onRefreshButtonClickHandler}>다시 가져오기</button>
+      <List todos={todos}/>
+    </>
   );
 }
 
