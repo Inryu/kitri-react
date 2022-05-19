@@ -5,6 +5,14 @@ const ShopContentList = (props) => {
     // https://ko.reactjs.org/docs/lists-and-keys.html
     // li를 식별할 수 있는 유일한 값 key가 필요함.
 
+    if(props.products.length ===0){
+        return (
+            <ul>
+                <li>상품이 없어요.</li>
+            </ul>
+        )
+    }
+
     return(
         <ul>
             {
